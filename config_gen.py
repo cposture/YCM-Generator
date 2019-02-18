@@ -163,9 +163,10 @@ def fake_build(project_dir, c_build_log_path, cxx_build_log_path, verbose, make_
     # environment variables and arguments for build process
     started = time.time()
     FNULL = open(os.devnull, "w")
+    f_build_log_path = open(cxx_build_log_path, "w")
     proc_opts = {} if verbose else {
-        "stdin": FNULL,
-        "stdout": FNULL,
+        "stdin" : FNULL,
+        "stdout": f_build_log_path,
         "stderr": FNULL
     }
     proc_opts["cwd"] = project_dir
